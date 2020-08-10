@@ -5,14 +5,9 @@ import okhttp3.Request;
 import okhttp3.Response;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.http.HttpStatus;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.server.ResponseStatusException;
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.EnumSet;
@@ -33,7 +28,7 @@ public class ErgasiaApplication {
     @GetMapping("/exchange")
     public List<Exchange> getExchange(@RequestParam(value = "amount", defaultValue = "1.0") Double amount,
                                       @RequestParam(value = "from", defaultValue = "EUR") Currency from,
-                                      @RequestParam(value = "to", defaultValue = "SGD,MYR,EUR,USD,AUD,JPY,CNH,HKD,CAD,INR,DKK,GBP,RUB,NZD,MXN,IDR,TWD,THB,VND") List<Currency> to) {
+                                      @RequestParam(value = "to", defaultValue = "SGD,MYR,EUR,USD,AUD,JPY,HKD,CAD,INR,DKK,RUB,NZD,MXN,IDR,TWD,THB,VND") List<Currency> to) {
         List<Exchange> exchanges = new ArrayList<>();
         if (to.contains(from)) {
             to.remove(from);
