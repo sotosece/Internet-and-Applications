@@ -7,3 +7,4 @@ public enum Currency {
     RUB, NZD, MXN, IDR,
     TWD, THB, VND;
 }
+//gbp bug

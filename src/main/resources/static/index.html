@@ -1,0 +1,63 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>You first Spring application</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <script>
+        function refreshTable1() {
+            var table = document.getElementById("table1");
+            var from = document.getElementById("select1").value;
+            console.log(from);
+            table.innerHTML = null;
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    console.log(this.responseText);
+                    var objects = JSON.parse(this.responseText);
+                    objects.forEach( element => {
+                            var row = table.insertRow(0);
+                            var cell0 = row.insertCell(0);
+                            var cell1 = row.insertCell(1);
+                            var cell2 = row.insertCell(2);
+                            cell0.innerHTML = element.from;
+                            cell1.innerHTML = element.to;
+                            cell2.innerHTML = element.exchangeAmount;
+                    });
+                }
+            };
+            xhttp.open("GET", "exchange?from=" + from, true);
+            xhttp.send();
+        }
+    </script>
+</head>
+<body onload="refreshTable1();">
+<div style="display: inline">
+    <div style="width:50%; height:100%; display: inline-block; float:left;">
+        <select id="select1">
+            <option value="SGD">SGD</option>
+            <option value="MYR">MYR</option>
+            <option value="EUR" selected>EUR</option>
+            <option value="USD">USD</option>
+            <option value="AUD">AUD</option>
+            <option value="JPY">JPY</option>
+            <option value="CNH">CNH</option>
+            <option value="HKD">HKD</option>
+            <option value="CAD">CAD</option>
+            <option value="INR">INR</option>
+            <option value="DKK">DKK</option>
+            <option value="GBP">GBP</option>
+            <option value="RUB">RUB</option>
+            <option value="NZD">NZD</option>
+            <option value="MXN">MXN</option>
+            <option value="IDR">IDR</option>
+            <option value="TWD">TWD</option>
+            <option value="THB">THB</option>
+            <option value="VND">VND</option>
+        </select>
+        <button onclick="refreshTable1()">Refresh</button>
+        <table id="table1"></table>
+    </div>
+    <div style="width: 50%; height:100%; display: inline-block;">right</div>
+</div>
+</body>
+</html>
