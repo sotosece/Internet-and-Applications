@@ -15,6 +15,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.EnumSet;
 import java.util.List;
 import java.util.Objects;
 import java.util.logging.Logger;
@@ -66,5 +67,10 @@ public class ErgasiaApplication {
                 .withRate(rate)
                 .withExchangeAmount(rate*amount)
                 .build();
+    }
+
+    @GetMapping("/currencies")
+    public List<Currency> getCurrencies() {
+        return new ArrayList<Currency>(EnumSet.allOf(Currency.class));
     }
 }

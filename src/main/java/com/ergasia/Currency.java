@@ -8,3 +8,4 @@ public enum Currency {
     TWD, THB, VND;
 }
 //gbp bug
+//cnh returns 0
