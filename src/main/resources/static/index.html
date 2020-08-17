@@ -15,7 +15,7 @@
     <div class="left_container">
         <p>Current rate of:
             <select id="select1"></select>
-            <button onclick="refreshTable('table1', 'select1', null)">Refresh</button>
+            <button id="refreshButton" onclick="refreshTable('table1', 'select1')">Refresh</button>
         </p>
         <table class="coin_table" id="table1"></table>
         <div class="loader" id="loader1"></div>
@@ -34,7 +34,7 @@
             <div id="checkboxes"></div>
         </div>:
         <input id='input1' type="number" min="0.00" step="0.01" />
-        <button onclick="refreshTable('table2', 'select2', 'select3', 'input1')">Calculate</button>
+        <button id="calculateButton" onclick="refreshTable('table2', 'select2', 'select3', 'input1')">Calculate</button>
         <table class="coin_table" id="table2"></table>
         <div class="loader" id="loader2"></div>
     </div>

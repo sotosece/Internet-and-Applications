@@ -1,12 +1,17 @@
+var expanded = false;
+
 function refreshTable(tableId, selectId, select2Id, inputId) {
     var loaderId = (tableId === 'table1') ? '#loader1' : '#loader2';
     $(loaderId).show();
-
+    var buttonId = (tableId === 'table1') ? '#refreshButton' : '#calculateButton';
+    $(buttonId).prop("disabled", true);
     var table = document.getElementById(tableId);
     var from = document.getElementById(selectId).value;
     var url = "exchange?from=" + from;
     if (select2Id != null && inputId != null) {
-        showCheckboxes();
+        if (expanded) {
+            showCheckboxes();
+        }
         var checkboxes = document.querySelectorAll('input[type=checkbox]:checked');
         var to = Array.prototype.map.call(checkboxes, el => el.id);
         console.log(to);
@@ -33,6 +38,7 @@ function refreshTable(tableId, selectId, select2Id, inputId) {
                 cell2.innerHTML = element.exchangeAmount;
             });
             $(loaderId).hide();
+            $(buttonId).prop("disabled", false);
         }
     };
     xhttp.open("GET", url, true);
@@ -62,14 +68,12 @@ function setSelectLists(){
             select1.value = "EUR";
             select2.value = "EUR";
             select3.value = "EUR";
-            refreshTable("table1", "select1", null, null);
+            refreshTable("table1", "select1");
         }
     };
     xhttp.open("GET", "currencies", true);
     xhttp.send();
 };
-
-var expanded = false;
 
 function showCheckboxes() {
     var checkboxes = document.getElementById("checkboxes");
