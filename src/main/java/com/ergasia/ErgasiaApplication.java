@@ -38,7 +38,6 @@ public class ErgasiaApplication {
                 exchanges.add(createExchange(amount, from, currency));
             } catch (IOException | NumberFormatException e) {
                 logger.info(currency.toString());
-//                throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage(), e);
             }
         }
         return exchanges;
