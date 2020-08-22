@@ -1,6 +1,6 @@
 var expanded = false;
 
-function refreshTable(tableId, selectId, select2Id, inputId) {
+function refreshTable(tableId, selectId, inputId) {
     var loaderId = (tableId === 'table1') ? '#loader1' : '#loader2';
     $(loaderId).show();
     var buttonId = (tableId === 'table1') ? '#refreshButton' : '#calculateButton';
@@ -8,7 +8,7 @@ function refreshTable(tableId, selectId, select2Id, inputId) {
     var table = document.getElementById(tableId);
     var from = document.getElementById(selectId).value;
     var url = "exchange?from=" + from;
-    if (select2Id != null && inputId != null) {
+    if (inputId != null) {
         if (expanded) {
             showCheckboxes();
         }
@@ -73,7 +73,7 @@ function setSelectLists(){
     };
     xhttp.open("GET", "currencies", true);
     xhttp.send();
-};
+}
 
 function showCheckboxes() {
     var checkboxes = document.getElementById("checkboxes");
