@@ -1,0 +1,43 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Currency Exchanger</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="index_js.js"></script>
+    <link rel="stylesheet" type="text/css" href="index_css.css">
+</head>
+<body onload="setSelectLists();">
+<div class="topnav">
+    <p class="active">Currency Exchanger</p>
+</div>
+<div class="main_container">
+    <div class="left_container">
+        <p>Current rate of:
+            <select id="select1"></select>
+            <button id="refreshButton" onclick="refreshTable('table1', 'select1')">Refresh</button>
+        </p>
+        <table class="coin_table" id="table1"></table>
+        <div class="loader" id="loader1"></div>
+    </div>
+    <div class="right_container">
+        Convert
+        <select id="select2"></select>
+        to
+        <div class="multiselect">
+            <div class="selectBox" onclick="showCheckboxes()">
+                <select>
+                    <option>Select coins</option>
+                </select>
+                <div class="overSelect"></div>
+            </div>
+            <div id="checkboxes"></div>
+        </div>:
+        <input id='input1' type="number" step="0.01" />
+        <button id="calculateButton" onclick="refreshTable('table2', 'select2', 'input1')">Calculate</button>
+        <table class="coin_table" id="table2"></table>
+        <div class="loader" id="loader2"></div>
+    </div>
+</div>
+</body>
+</html>
